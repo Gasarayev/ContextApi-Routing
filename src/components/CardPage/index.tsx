@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { ContextApi } from "../../context/favoriteContext";
+import { useNavigate } from "react-router-dom";
 
 function Card({ favIcon, setFavIcon }) {
   const { products } = useContext(ContextApi);
+  
 
   const handleFavoriteClick = (product) => {
     if (favIcon.includes(product)) {
@@ -10,6 +12,7 @@ function Card({ favIcon, setFavIcon }) {
     } else {
       setFavIcon([...favIcon, product]);
     }
+    
   };
 
   return (
@@ -18,9 +21,9 @@ function Card({ favIcon, setFavIcon }) {
         <div key={index} className="product-slide" style={{ border: "1px solid gray" }}>
           <img src={product.image} alt="" style={{ width: "200px", height: "200px" }} />
           <i
-            className="fa-regular fa-heart"
+            className="fa-regular fa-heart" 
             onClick={() => handleFavoriteClick(product)}
-            style={{ color: favIcon.includes(product) ? "red" : "black" }}
+            style={{ color: favIcon.includes(product) ? "red" : "black" , cursor:"pointer", fontSize:"26px"}}
           ></i>
         </div>
       ))}

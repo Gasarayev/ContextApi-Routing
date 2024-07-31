@@ -13,7 +13,7 @@ function ContextA({ children }) {
   }, []);
 
   return (
-    <ContextApi.Provider value={{ products, setProducts }}>
+    <ContextApi.Provider value={{ products }}>
       {children}
     </ContextApi.Provider>
   );

@@ -13,10 +13,10 @@ function Headers({favIcon}) {
           <Link to={"/"}>  Home </Link>
           </li>
 
-          <li><Link to={"/shopping-list/"}>  Favorites  </Link></li>
+          <li><Link to={"/shopping-list/"}>  Cards  </Link></li>
           
           
-          <li>Favorites <span>{favIcon}</span></li>
+          <li><Link to={"/favorite/"} > Favorites <span>{favIcon}</span></Link></li>
         
         </ul>
       </div>

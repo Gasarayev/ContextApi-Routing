@@ -4,6 +4,7 @@ import HomePage from "./components/HomePage";
 import Headers from "./components/Layout/Headers";
 import Card from "./components/CardPage";
 import ContextA from "./context/favoriteContext";
+import Favorite from "./components/Favorite";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shopping-list/" element={<Card favIcon={favIcon} setFavIcon={setFavIcon}/>} />
+          <Route path="/favorite/"element={<Favorite favIcon={favIcon}/>} />
         </Routes>
       </Router>
     </ContextA>
