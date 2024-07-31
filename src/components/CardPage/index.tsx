@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { ContextApi } from "../../context/favoriteContext";
-import { useNavigate } from "react-router-dom";
+import { Card } from "antd";
+const { Meta } = Card;
 
-function Card({ favIcon, setFavIcon }) {
+function MyCard({ favIcon, setFavIcon }) {
   const { products } = useContext(ContextApi);
-  
 
   const handleFavoriteClick = (product) => {
     if (favIcon.includes(product)) {
@@ -12,23 +12,43 @@ function Card({ favIcon, setFavIcon }) {
     } else {
       setFavIcon([...favIcon, product]);
     }
-    
   };
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", marginTop: "50px", gap: "10px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        marginTop: "50px",
+        gap: "10px",
+      }}
+    >
       {products.map((product, index) => (
-        <div key={index} className="product-slide" style={{ border: "1px solid gray" }}>
-          <img src={product.image} alt="" style={{ width: "200px", height: "200px" }} />
+
+        
+        <Card
+          hoverable
+          style={{ width: 240 }}
+          cover={<img alt="example" src={product.image} style={{height:"300px", padding:"30px", objectFit:"contain", position:"relative"}}/>}
+        >
           <i
             className="fa-regular fa-heart" 
             onClick={() => handleFavoriteClick(product)}
-            style={{ color: favIcon.includes(product) ? "red" : "black" , cursor:"pointer", fontSize:"26px"}}
+            style={{ color: favIcon.includes(product) ? "red" : "black" , cursor:"pointer", fontSize:"26px", position:"absolute", top:"10px", right:"10px"}}
           ></i>
-        </div>
+          <div>
+            {product.price}
+          </div>
+          <Meta title={product.title} description={`${product.description.slice(1, 100)}...`} />
+        </Card>
       ))}
     </div>
   );
 }
 
-export default Card;
+export default MyCard;
+
+
+
+
